@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class School {
     private List<Student> studentenListe = new ArrayList<>();
@@ -34,4 +35,16 @@ public class School {
         return false; // Student nicht gefunden und nicht entfernt
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        School school = (School) o;
+        return Objects.equals(studentenListe, school.studentenListe);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentenListe);
+    }
 }
